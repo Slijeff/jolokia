@@ -339,7 +339,8 @@ public class JolokiaServerTest {
                     URL url = new URL(server.getUrl());
                     String resp = EnvTestUtil.readToString(url.openStream());
                     assertTrue(
-                        resp.matches(".*type.*version.*" + Version.getAgentVersion() + ".*"));
+                        resp.matches(".*type.*version.*" + Version.getAgentVersion() + ".*") 
+                        || resp.matches(".*" + Version.getAgentVersion() + ".*type.*version.*"));
                     if (!protocols.contains(protocol) || !cipherSuites.contains(cipherSuite)) {
                         fail(String.format("Expected SSLHandshakeException with the %s protocol and %s cipher suite", protocol, cipherSuite));
                     }
